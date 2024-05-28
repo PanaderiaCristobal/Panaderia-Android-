@@ -5,5 +5,27 @@
     <string name="init_description_v2">Sabor y tradición, en un app sin igual</string>
     <string name="txt_button_init_session">Iniciar Sesión</string>
     <string name="txt_button_init_register">Registrarse</string>
-    <string name="tvCategorias">Categorias</string>
+    <string name="rb_client">Cliente</string>
+    <string name="rb_sellet">Vendedor</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="user_name">Nombe</string>
+    <string name="email">Correo</string>
+    <string name="hint_user_name">Ingrese su nombre</string>
+    <string name="hint_email">Ingrese su correo</string>
+    <string name="hint_user_last_name">Ingrese sus apellidos</string>
+    <string name="last_name">Apellidos</string>
+    <string name="password">Contraseña</string>
+    <string name="confirm_password">Confirmar contraseña</string>
+    <string name="hint_user_hint_email">Ingrese su correo</string>
+    <string name="hint_user_password">Ingrese su contraseña</string>
+    <string name="hint_user_confirm_password">Ingrese su contraseña</string>
+    <string name="img_content">Imagen de contenido</string>
+    <string name="otp">Clave</string>
+    <string name="hint_user_otp">Ingrese su clave</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="txt_carrito_de_compras">Carrito de compras</string>
 </resources>
