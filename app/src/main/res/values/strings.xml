@@ -5,4 +5,5 @@
     <string name="init_description_v2">Sabor y tradición, en un app sin igual</string>
     <string name="txt_button_init_session">Iniciar Sesión</string>
     <string name="txt_button_init_register">Registrarse</string>
+    <string name="tvCategorias">Categorias</string>
 </resources>
