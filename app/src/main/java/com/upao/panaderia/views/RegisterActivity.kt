@@ -33,10 +33,10 @@ class RegisterActivity : AppCompatActivity() {
         binding.registerClient.setBackgroundResource(R.drawable.button_state_selected)
         binding.registerSeller.setBackgroundResource(R.drawable.button_state_selected)
         binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
-        binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.white)
+        binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
         binding.registerClient.setOnClickListener {
             binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
-            binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.white)
+            binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
             binding.registerClient.setTextAppearance(R.style.ButtonSelected)
             binding.registerSeller.setTextAppearance(R.style.ButtonNoSelected)
             loadFragment(RegisterClientFragment())
@@ -44,7 +44,7 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.registerSeller.setOnClickListener{
             binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
-            binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.white)
+            binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
             binding.registerSeller.setTextAppearance(R.style.ButtonSelected)
             binding.registerClient.setTextAppearance(R.style.ButtonNoSelected)
             loadFragment(RegisterSellerFragment())

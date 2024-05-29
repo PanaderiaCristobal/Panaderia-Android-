@@ -28,4 +28,14 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="txt_carrito_de_compras">Carrito de compras</string>
+    <string name="home_txt_name_client">Ana Perez</string>
+    <string name="my_order">Mi pedido</string>
+    <string name="search_product">Buscar producto</string>
+    <string name="tvCategorias">Categorias</string>
+    <string name="home_image">Home Image</string>
+    <string name="accumulate_poinst_for_purchases">Acumula puntos por tus compras</string>
+    <string name="tortas">Tortas</string>
+    <string name="panes">Panes</string>
+    <string name="bocaditos">Bocaditos</string>
+    <string name="piononos">Piononos</string>
 </resources>
