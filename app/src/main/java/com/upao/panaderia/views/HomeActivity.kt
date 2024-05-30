@@ -2,15 +2,24 @@ package com.upao.panaderia.views
 
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.Button
+import android.widget.Toast
 import androidx.activity.SystemBarStyle
 import androidx.activity.enableEdgeToEdge
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.upao.panaderia.R
+import com.upao.panaderia.adapters.ProductsAdapter
 import com.upao.panaderia.databinding.ActivityHomeBinding
+import com.upao.panaderia.models.adaptersModel.ProductAdapterModel
+import com.upao.panaderia.ui.home.HomeFragment
 
 class HomeActivity : AppCompatActivity() {
 

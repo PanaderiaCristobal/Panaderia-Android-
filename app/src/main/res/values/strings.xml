@@ -38,4 +38,9 @@
     <string name="panes">Panes</string>
     <string name="bocaditos">Bocaditos</string>
     <string name="piononos">Piononos</string>
+    <string name="alfajor1">Alfajor</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="price_product">S/ 50.00</string>
+    <string name="plus_button">+</string>
+    <string name="button_plus">Button plus</string>
 </resources>

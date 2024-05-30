@@ -127,27 +127,31 @@
             android:textSize="20sp"
             android:fontFamily="@font/sora_regular"
             android:textStyle="bold"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"/>
 
         <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none"
-            app:layout_constraintTop_toBottomOf="@id/tvCategorias">
+            android:scrollbars="none">
 
             <LinearLayout
+                android:id="@+id/button_container"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <Button
+                    style="@style/ButtonSelected"
+                    android:id="@+id/btnTortas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/tortas"
-                    android:backgroundTint="#D9B39A"
                     android:textColor="@android:color/white" />
 
                 <Button
+                    style="@style/ButtonNoSelected"
+                    android:id="@+id/btnPanes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/panes"
@@ -156,6 +160,8 @@
                     android:layout_marginStart="8dp" />
 
                 <Button
+                    style="@style/ButtonNoSelected"
+                    android:id="@+id/btnBocaditos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/bocaditos"
@@ -164,19 +170,24 @@
                     android:layout_marginStart="8dp" />
 
                 <Button
+                    style="@style/ButtonNoSelected"
+                    android:id="@+id/btnPiononos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/piononos"
                     android:backgroundTint="#E0E0E0"
                     android:textColor="@android:color/black"
                     android:layout_marginStart="8dp" />
+
             </LinearLayout>
+
         </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvProductos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="@drawable/ic_button_plus_background"
             android:layout_marginTop="16dp" />
 
     </LinearLayout>

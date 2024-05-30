@@ -30,23 +30,15 @@ class RegisterActivity : AppCompatActivity() {
             loadFragment(RegisterClientFragment())
         }
 
-        binding.registerClient.setBackgroundResource(R.drawable.button_state_selected)
-        binding.registerSeller.setBackgroundResource(R.drawable.button_state_selected)
-        binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
-        binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
+        initializeButtons()
+
         binding.registerClient.setOnClickListener {
-            binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
-            binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
-            binding.registerClient.setTextAppearance(R.style.ButtonSelected)
-            binding.registerSeller.setTextAppearance(R.style.ButtonNoSelected)
+            updateButtonStates(isClientSelected = true)
             loadFragment(RegisterClientFragment())
         }
 
-        binding.registerSeller.setOnClickListener{
-            binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
-            binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
-            binding.registerSeller.setTextAppearance(R.style.ButtonSelected)
-            binding.registerClient.setTextAppearance(R.style.ButtonNoSelected)
+        binding.registerSeller.setOnClickListener {
+            updateButtonStates(isClientSelected = false)
             loadFragment(RegisterSellerFragment())
         }
     }
@@ -55,6 +47,27 @@ class RegisterActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction().apply {
             replace(R.id.fragment_container, fragment)
             commit()
+        }
+    }
+
+    private fun initializeButtons() {
+        binding.registerClient.setBackgroundResource(R.drawable.button_state_selected)
+        binding.registerSeller.setBackgroundResource(R.drawable.button_state_selected)
+        binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
+        binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
+    }
+
+    private fun updateButtonStates(isClientSelected: Boolean) {
+        if (isClientSelected) {
+            binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
+            binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
+            binding.registerClient.setTextAppearance(R.style.ButtonSelected)
+            binding.registerSeller.setTextAppearance(R.style.ButtonNoSelected)
+        } else {
+            binding.registerSeller.backgroundTintList = ContextCompat.getColorStateList(this, R.color.button)
+            binding.registerClient.backgroundTintList = ContextCompat.getColorStateList(this, R.color.no_select)
+            binding.registerSeller.setTextAppearance(R.style.ButtonSelected)
+            binding.registerClient.setTextAppearance(R.style.ButtonNoSelected)
         }
     }
 }
