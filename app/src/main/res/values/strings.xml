@@ -7,7 +7,6 @@
     <string name="txt_button_init_register">Registrarse</string>
     <string name="rb_client">Cliente</string>
     <string name="rb_sellet">Vendedor</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_name">Nombe</string>
     <string name="email">Correo</string>
@@ -38,4 +37,9 @@
     <string name="panes">Panes</string>
     <string name="bocaditos">Bocaditos</string>
     <string name="piononos">Piononos</string>
+    <string name="alfajor1">Alfajor</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="price_product">S/ 50.00</string>
+    <string name="plus_button">+</string>
+    <string name="button_plus">Button plus</string>
 </resources>
