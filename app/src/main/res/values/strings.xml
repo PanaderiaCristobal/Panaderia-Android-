@@ -7,7 +7,6 @@
     <string name="txt_button_init_register">Registrarse</string>
     <string name="rb_client">Cliente</string>
     <string name="rb_sellet">Vendedor</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="user_name">Nombe</string>
     <string name="email">Correo</string>
