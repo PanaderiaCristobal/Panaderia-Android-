@@ -42,4 +42,5 @@
     <string name="price_product">S/ 50.00</string>
     <string name="plus_button">+</string>
     <string name="button_plus">Button plus</string>
+    <string name="user_logged">%1$s %2$s</string>
 </resources>

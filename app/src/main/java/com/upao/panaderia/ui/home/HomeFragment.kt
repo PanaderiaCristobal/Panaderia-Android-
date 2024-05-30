@@ -1,5 +1,6 @@
 package com.upao.panaderia.ui.home
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,8 +11,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.upao.panaderia.R
 import com.upao.panaderia.adapters.ProductsAdapter
 import com.upao.panaderia.databinding.FragmentHomeBinding
+import com.upao.panaderia.helpers.SharedPreferencesManager
 import com.upao.panaderia.models.adaptersModel.ProductAdapterModel
 import java.util.ArrayList
+import java.util.Date
 
 class HomeFragment : Fragment() {
 
@@ -28,6 +31,11 @@ class HomeFragment : Fragment() {
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
+        val getUser = SharedPreferencesManager.getUserData(requireContext())
+        val user = getUser?.split(",")
+        val userLogged = getString(R.string.user_logged, user?.get(0), user?.get(1))
+        binding.tvClientName.text = userLogged
 
         initializeButtons()
         setButtonListeners()
