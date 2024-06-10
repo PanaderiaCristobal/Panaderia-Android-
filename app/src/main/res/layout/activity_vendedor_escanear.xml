@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Top padding for status bar -->
+
     <View
         android:layout_width="match_parent"
         android:layout_height="24dp"
         android:background="@android:color/transparent"
         android:layout_alignParentTop="true"/>
 
-    <!-- Vendedor Information -->
+
     <TextView
         android:id="@+id/vendedor"
         android:layout_width="wrap_content"
@@ -34,9 +34,9 @@
         android:textColor="@android:color/black"
         android:textStyle="bold" />
 
-    <!-- Profile Icon -->
 
-    <!-- Escanear Button -->
+
+
     <ImageView
         android:id="@+id/profile_icon"
         android:layout_width="50dp"
@@ -55,7 +55,7 @@
         android:backgroundTint="@color/button"
         android:textColor="@android:color/white" />
 
-    <!-- Bottom Navigation Bar -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -69,16 +69,16 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_home"
-            android:tint="@android:color/holo_orange_light" />
+
+             />
 
         <ImageView
             android:id="@+id/settings_icon"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:src="@drawable/ic_settings"
-            android:tint="@android:color/black" />
+
+           />
     </LinearLayout>
 
 </RelativeLayout>
