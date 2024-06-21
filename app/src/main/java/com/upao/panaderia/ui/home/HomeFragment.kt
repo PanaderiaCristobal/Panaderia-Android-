@@ -34,7 +34,7 @@ class HomeFragment : Fragment() {
 
         val getUser = SharedPreferencesManager.getUserData(requireContext())
         val user = getUser?.split(",")
-        val userLogged = getString(R.string.user_logged, user?.get(0), user?.get(1))
+        val userLogged = user?.get(0)
         binding.tvClientName.text = userLogged
 
         initializeButtons()

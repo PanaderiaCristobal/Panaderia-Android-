@@ -7,8 +7,6 @@ class UserRequest {
     var email: String = ""
     var password: String = ""
     var rol: String = ""
-    var isActive: Int = 0
-    var isDelete: Int = 0
     var createdAT: String = ""
     var updatedAT: String = ""
 
@@ -20,8 +18,6 @@ class UserRequest {
         email: String,
         password: String,
         rol: String,
-        isActive: Int,
-        isDelete: Int,
         createdAT: String,
         updatedAT: String
     ) {
@@ -30,13 +26,11 @@ class UserRequest {
         this.email = email
         this.password = password
         this.rol = rol
-        this.isActive = isActive
-        this.isDelete = isDelete
         this.createdAT = createdAT
         this.updatedAT = updatedAT
     }
 
     override fun toString(): String {
-        return "UserRequest(nombre='$nombre', apellido='$apellido', email='$email', password='$password', rol='$rol', isActive=$isActive, isDelete=$isDelete, createdAT='$createdAT', updatedAT='$updatedAT')"
+        return "UserRequest(nombre='$nombre', apellido='$apellido', email='$email', password='$password', rol='$rol', createdAT='$createdAT', updatedAT='$updatedAT')"
     }
 }

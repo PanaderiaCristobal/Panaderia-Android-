@@ -17,7 +17,27 @@
             android:exported="false"
             android:label="@string/title_activity_home" />
         <activity
+            android:name=".views.EditarInformacion"
+            android:exported="false" />
+        <activity
+            android:name=".views.RegistroEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.LoginEmailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.Inicio"
+            android:exported="false" />
+        <activity
+            android:name=".helpers.OpcionesLoginActivity"
+            android:exported="false" />
+        <activity
             android:name=".views.RegisterActivity"
+            android:exported="false" />
+        <activity android:name=".views.CarritoComprasActivity"
+            android:exported="false" />
+        <activity
+            android:name=".views.ProductDetails"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

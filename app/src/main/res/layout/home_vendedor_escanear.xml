@@ -7,12 +7,6 @@
     android:background="@android:color/white"
     tools:context=".MainActivity">
 
-
-    <!-- Botón "Anterior" en la esquina superior izquierda -->
-
-    <!-- TextView para "Escanear" centrado en la parte superior -->
-
-    <!-- CardView para el QR code -->
     <Button
         android:id="@+id/backButton"
         style="@style/ButtonRound"
@@ -60,7 +54,6 @@
             android:src="@drawable/pruebaqr" />
     </androidx.cardview.widget.CardView>
 
-    <!-- Botón "Cancelar" debajo del QR code -->
     <Button
         android:id="@+id/cancelButton"
         style="@style/ButtonRound"

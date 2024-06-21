@@ -1,71 +1,60 @@
 package com.upao.panaderia.repositories
 
-import android.content.ContentValues
 import android.content.Context
-import android.database.sqlite.SQLiteDatabase
-import android.util.Log
-import com.upao.panaderia.handlerSQLite.DBOpenHelper
-import com.upao.panaderia.handlerSQLite.TABLES
-import com.upao.panaderia.models.requestModel.UserRequest
-import com.upao.panaderia.models.responseModel.UserResponse
-import com.upao.panaderia.service.UserService
+import android.widget.Toast
+import com.google.gson.Gson
+import com.upao.panaderia.api.apiClient.Apiclient
+import com.upao.panaderia.api.apiEndpoints.ApiService
+import com.upao.panaderia.models.ApiError
+import com.upao.panaderia.models.requestModel.RegisterRequest
+import com.upao.panaderia.models.responseModel.ErrorResponse
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import java.util.Locale
 
 class UserRepository(context: Context) {
 
-    private val dbHandler: DBOpenHelper = DBOpenHelper(context)
-    private var db: SQLiteDatabase? = null
-
-    private val allColumns = arrayOf(
-        TABLES().USER_ID,
-        TABLES().USER_NAME,
-        TABLES().USER_LASTNAME,
-        TABLES().USER_EMAIL,
-        TABLES().USER_PASSWORD,
-        TABLES().USER_ROLE,
-        TABLES().USER_ISACTIVE,
-        TABLES().USER_ISDELETE,
-        TABLES().USER_CREATEDAT,
-        TABLES().USER_UPDATEDAT
-    )
-
-    fun open() {
-        Log.i(UserService.LOGTAG, "Users: Database opened")
-        db = dbHandler.writableDatabase
+    suspend fun register(context: Context, user: RegisterRequest) : Boolean{
+        val apiService = Apiclient.createService(ApiService::class.java)
+        val response = apiService.register(user)
+        return withContext(Dispatchers.Main) {
+            if (response.isSuccessful) {
+                val registerResponse = response.body()
+                Toast.makeText(context, registerResponse?.msg, Toast.LENGTH_SHORT).show()
+                true
+            } else {
+                val errorResponse = response.errorBody()?.string()
+                val apiErrors = parseError(errorResponse)
+                apiErrors?.let { errors ->
+                    for (error in errors) {
+                        val capitalizedCode = error.code.replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.ROOT
+                            ) else it.toString()
+                        }
+                        Toast.makeText(
+                            context,
+                            "${capitalizedCode}: ${error.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } ?: run {
+                    Toast.makeText(context, "Error desconocido", Toast.LENGTH_SHORT).show()
+                }
+                false
+            }
+        }
     }
 
-    fun close() {
-        Log.i(UserService.LOGTAG, "Users: Database closed")
-        dbHandler.close()
-    }
-
-    fun findByEmail(email: String): Boolean {
-        val cursor = db?.query(
-            TABLES().TABLE_USER,
-            allColumns,
-            "${TABLES().USER_EMAIL} = ?",
-            arrayOf(email),
-            null,
-            null,
+    private fun parseError(errorBody: String?): List<ApiError>? {
+        return try {
+            errorBody?.let {
+                val gson = Gson()
+                val errorResponse = gson.fromJson(it, ErrorResponse::class.java)
+                errorResponse.errors
+            }
+        } catch (e: Exception) {
             null
-        )
-        val result = cursor?.count ?: 0
-        cursor?.close()
-        return result > 0
-    }
-
-    fun register(user: UserRequest): Boolean {
-        val values = ContentValues()
-        values.put(TABLES().USER_NAME, user.nombre)
-        values.put(TABLES().USER_LASTNAME, user.apellido)
-        values.put(TABLES().USER_EMAIL, user.email)
-        values.put(TABLES().USER_PASSWORD, user.password)
-        values.put(TABLES().USER_ROLE, user.rol)
-        values.put(TABLES().USER_ISACTIVE, user.isActive)
-        values.put(TABLES().USER_ISDELETE, user.isDelete)
-        values.put(TABLES().USER_CREATEDAT, user.createdAT)
-        values.put(TABLES().USER_UPDATEDAT, user.updatedAT)
-
-        val insertId = db?.insert(TABLES().TABLE_USER, null, values)
-        return insertId != -1L
+        }
     }
 }

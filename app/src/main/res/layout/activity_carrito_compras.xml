@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".views.CarritoComprasActivity"
+    android:layout_height="match_parent">
+
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appBarLayout"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content">-->
+
+<!--        <androidx.appcompat.widget.Toolbar-->
+<!--            android:id="@+id/toolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@color/white"-->
+<!--            app:navigationIcon="?attr/homeAsUpIndicator"-->
+<!--            app:title="Carrito de compras" />-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="qode_background_color"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="16dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivImagenProducto"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/placeholder_image" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvNombreProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cheesecake Chocolate"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDescripcionProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="Cremosa, con intenso sabor a chocolate..." />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvPrecioProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="S/ 50.00"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="92dp"-->
+<!--                android:layout_height="111dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btnEliminar"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="?android:attr/selectableItemBackgroundBorderless"-->
+<!--                    android:src="@drawable/ic_close" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="30dp"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnDisminuir"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="33dp"-->
+<!--                        android:layout_height="26dp"-->
+<!--                        android:text="-" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvCantidad"-->
+<!--                        android:layout_width="29dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingHorizontal="16dp"-->
+<!--                        android:text="1"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnAumentar"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="30dp"-->
+<!--                        android:layout_height="33dp"-->
+<!--                        android:text="+" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/rounded_background"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="16dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivImagenProducto"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/placeholder_image" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="160dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvNombreProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Cheesecake maracuyá"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDescripcionProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="postre que combina la suavidad inigualable ...    Leer mas" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvPrecioProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="S/ 50.00"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="112dp"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btnEliminar"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="?android:attr/selectableItemBackgroundBorderless"-->
+<!--                    android:src="@drawable/ic_close" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnDisminuir"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="20dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:text="-" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvCantidad"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingHorizontal="16dp"-->
+<!--                        android:text="1"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnAumentar"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="26dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:text="+" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/rounded_background"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="16dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivImagenProducto"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/placeholder_image" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvNombreProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Ciabatta"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDescripcionProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="Crujiente corteza y una blanda y abierta miga ...      Leer mas" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvPrecioProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="S/ 00.50"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btnEliminar"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="?android:attr/selectableItemBackgroundBorderless"-->
+<!--                    android:src="@drawable/ic_close" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnDisminuir"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:text="-" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvCantidad"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingHorizontal="16dp"-->
+<!--                        android:text="1"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnAumentar"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:text="+" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:background="@drawable/rounded_background"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:padding="16dp">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/ivImagenProducto"-->
+<!--                android:layout_width="100dp"-->
+<!--                android:layout_height="100dp"-->
+<!--                android:layout_marginEnd="16dp"-->
+<!--                android:scaleType="centerCrop"-->
+<!--                android:src="@drawable/placeholder_image" />-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvNombreProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Mini orejitas"-->
+<!--                    android:textSize="18sp"-->
+<!--                    android:textStyle="bold" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvDescripcionProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="2"-->
+<!--                    android:text="Crujiente corteza y una blanda y abierta miga ... Leer mas" />-->
+
+<!--                <TextView-->
+<!--                    android:id="@+id/tvPrecioProducto"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:text="S/ 2.00"-->
+<!--                    android:textSize="16sp" />-->
+<!--            </LinearLayout>-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <ImageButton-->
+<!--                    android:id="@+id/btnEliminar"-->
+<!--                    android:layout_width="40dp"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:background="?android:attr/selectableItemBackgroundBorderless"-->
+<!--                    android:src="@drawable/ic_close" />-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="8dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnDisminuir"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:text="-" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvCantidad"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:paddingHorizontal="16dp"-->
+<!--                        android:text="1"-->
+<!--                        android:textSize="18sp" />-->
+
+<!--                    <Button-->
+<!--                        android:id="@+id/btnAumentar"-->
+<!--                        style="@style/Widget.AppCompat.Button.Borderless"-->
+<!--                        android:layout_width="40dp"-->
+<!--                        android:layout_height="40dp"-->
+<!--                        android:text="+" />-->
+<!--                </LinearLayout>-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical"-->
+<!--            android:padding="16dp">-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Método de pago"-->
+<!--                android:textSize="18sp" />-->
+
+<!--            <RadioGroup-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:orientation="horizontal">-->
+
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rbTarjeta"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="Tarjeta" />-->
+<!--            </RadioGroup>-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Monto total"-->
+<!--                android:textSize="18sp"-->
+<!--                android:layout_marginTop="16dp"/>-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvMontoTotal"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="S/ 102.50"-->
+<!--                android:textSize="24sp"-->
+<!--                android:textStyle="bold"/>-->
+
+<!--            <Button-->
+<!--                android:id="@+id/btnComprar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Comprar"-->
+<!--                android:layout_marginTop="16dp"/>-->
+
+<!--        </LinearLayout>-->
+
+
+
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
