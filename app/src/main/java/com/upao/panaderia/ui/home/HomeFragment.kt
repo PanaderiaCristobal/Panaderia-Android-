@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -42,11 +43,20 @@ class HomeFragment : Fragment() {
 
         products = ArrayList();
         productsAdapter = ProductsAdapter(products);
-        uploadProducts()
 
-        binding.rvProductos.layoutManager = GridLayoutManager(context, 2)
+        uploadProducts("category1")
+
+        binding.rvProductos.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvProductos.setHasFixedSize(true)
         binding.rvProductos.adapter = productsAdapter
+
+        productsAdapter.setOnItemClickListener(object : ProductsAdapter.OnItemClickListener {
+            override fun onItemClick(product: ProductAdapterModel) {
+                Toast.makeText(requireContext(), "Producto añadido al carrito", Toast.LENGTH_SHORT).show()
+                val productStr = product.title + "," + product.description + "," + product.image + "," + product.price
+                SharedPreferencesManager.saveProduct(requireContext(), productStr)
+            }
+        })
 
         return root
     }
@@ -54,14 +64,6 @@ class HomeFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    private fun uploadProducts() {
-        products.add(ProductAdapterModel("Pan de molde", "Pan de molde", R.drawable.alfajor1, 2.5))
-        products.add(ProductAdapterModel("Pan de molde integral", "Pan de molde integral", R.drawable.cocada, 3.0))
-        products.add(ProductAdapterModel("Pan de molde con pasas", "Pan de molde con pasas", R.drawable.empanada1, 3.5))
-        products.add(ProductAdapterModel("Pan de molde con nueces", "Pan de molde con nueces", R.drawable.huevos1, 4.0))
-        products.add(ProductAdapterModel("Pan de molde con pasas y nueces", "Pan de molde con pasas y nueces", R.drawable.pan10, 4.5))
     }
 
     private fun initializeButtons() {
@@ -79,9 +81,11 @@ class HomeFragment : Fragment() {
     private fun setButtonListeners() {
         binding.btnTortas.setOnClickListener {
             updateButtonStates(binding.btnTortas)
+            uploadProducts("category1")
         }
         binding.btnPanes.setOnClickListener {
             updateButtonStates(binding.btnPanes)
+            uploadProducts("category2")
         }
         binding.btnBocaditos.setOnClickListener {
             updateButtonStates(binding.btnBocaditos)
@@ -100,5 +104,29 @@ class HomeFragment : Fragment() {
                 setButtonState(button, R.drawable.button_state_selected, R.color.no_select)
             }
         }
+    }
+
+    private fun uploadProducts(category: String) {
+        products.clear()
+        when (category) {
+            "category1" -> {
+                products.add(ProductAdapterModel("Pan de molde", "Pan de molde", R.drawable.alfajor1, 2.5))
+                products.add(ProductAdapterModel("Pan de molde integral", "Pan de molde integral", R.drawable.cocada, 3.0))
+            }
+            "category2" -> {
+                products.add(ProductAdapterModel("Pan de molde con pasas", "Pan de molde con pasas", R.drawable.empanada1, 3.5))
+                products.add(ProductAdapterModel("Pan de molde con nueces", "Pan de molde con nueces", R.drawable.huevos1, 4.0))
+                products.add(ProductAdapterModel("Pan de molde con pasas y nueces", "Pan de molde con pasas y nueces", R.drawable.pan10, 4.5))
+            }
+        }
+        productsAdapter.notifyDataSetChanged()
+    }
+
+    private fun uploadProducts() {
+        products.add(ProductAdapterModel("Pan de molde", "Pan de molde", R.drawable.alfajor1, 2.5))
+        products.add(ProductAdapterModel("Pan de molde integral", "Pan de molde integral", R.drawable.cocada, 3.0))
+        products.add(ProductAdapterModel("Pan de molde con pasas", "Pan de molde con pasas", R.drawable.empanada1, 3.5))
+        products.add(ProductAdapterModel("Pan de molde con nueces", "Pan de molde con nueces", R.drawable.huevos1, 4.0))
+        products.add(ProductAdapterModel("Pan de molde con pasas y nueces", "Pan de molde con pasas y nueces", R.drawable.pan10, 4.5))
     }
 }
