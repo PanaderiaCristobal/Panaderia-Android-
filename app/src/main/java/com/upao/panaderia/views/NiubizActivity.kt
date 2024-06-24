@@ -29,12 +29,12 @@ class NiubizActivity : AppCompatActivity() {
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
 
-        binding.webview.loadUrl("https://api-trux-travel.strategyec.com/public_html/niubiz/$idPedido")
+        binding.webview.loadUrl("https://api-panaderia.strategyec.com/public_html/niubiz/$idPedido")
 
         binding.webview.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)
-                if(url == "https://api-trux-travel.strategyec.com/public_html/payment-success") {
+                if(url == "https://api-panaderia.strategyec.com/public_html/payment-success") {
                     SharedPreferencesManager.removeCartProducts(this@NiubizActivity)
                     val intent = Intent(this@NiubizActivity, HomeActivity::class.java)
                     startActivity(intent)

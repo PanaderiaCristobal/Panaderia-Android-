@@ -1,5 +1,6 @@
 package com.upao.panaderia.ui.profile
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,6 +10,7 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import com.upao.panaderia.controllers.UserController
 import com.upao.panaderia.databinding.FragmentProfileBinding
+import com.upao.panaderia.helpers.OpcionesLoginActivity
 import com.upao.panaderia.helpers.SharedPreferencesManager
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -51,6 +53,14 @@ class ProfileFragment : Fragment() {
                 ptsFidelidad.text = it.ptsFidelidad.toString()
                 tiempoRegistro.text = parseTimestampToDate(it.createdAt)
             }
+        }
+
+        binding.btnCerrarSesion.setOnClickListener {
+            SharedPreferencesManager.removeUserData(requireContext())
+            val i = Intent(requireContext(), OpcionesLoginActivity::class.java)
+            startActivity(i)
+            requireActivity().finish()
+
         }
     }
 

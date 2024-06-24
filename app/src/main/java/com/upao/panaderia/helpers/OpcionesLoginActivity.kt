@@ -18,6 +18,7 @@ import com.upao.panaderia.MainActivity
 import com.upao.panaderia.R
 import com.upao.panaderia.databinding.ActivityOpcionesLoginBinding
 import com.upao.panaderia.views.Constantes
+import com.upao.panaderia.views.HomeActivity
 import com.upao.panaderia.views.LoginEmailActivity
 
 class OpcionesLoginActivity : AppCompatActivity() {
@@ -45,7 +46,7 @@ class OpcionesLoginActivity : AppCompatActivity() {
 
         mGoogleSingnInClient = GoogleSignIn.getClient(this, gso)
 
-        comprobarSesion()
+//        comprobarSesion()
 
         binding.opcionEmail.setOnClickListener {
             startActivity(Intent(applicationContext, LoginEmailActivity::class.java))
@@ -153,7 +154,7 @@ class OpcionesLoginActivity : AppCompatActivity() {
 
     private fun comprobarSesion() {
         if (firebaseAuth.currentUser != null) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
             finishAffinity()
         }
     }

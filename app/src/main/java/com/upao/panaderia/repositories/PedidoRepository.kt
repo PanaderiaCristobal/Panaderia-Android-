@@ -21,7 +21,7 @@ class PedidoRepository(context: Context) {
             if (response.isSuccessful) {
                 val registerResponse = response.body()
                 val idPedido = registerResponse?.msg
-                Toast.makeText(context, "Pedido Creado con exito!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(context, "Pedido Creado con exito! ${idPedido}", Toast.LENGTH_SHORT).show()
                 idPedido ?: ""
             } else {
                 val errorResponse = response.errorBody()?.string()
