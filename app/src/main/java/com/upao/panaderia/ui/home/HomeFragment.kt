@@ -11,17 +11,18 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.upao.panaderia.R
 import com.upao.panaderia.adapters.ProductsAdapter
+import com.upao.panaderia.controllers.ProductsController
 import com.upao.panaderia.databinding.FragmentHomeBinding
 import com.upao.panaderia.helpers.SharedPreferencesManager
 import com.upao.panaderia.models.adaptersModel.ProductAdapterModel
 import java.util.ArrayList
-import java.util.Date
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private lateinit var productsAdapter: ProductsAdapter
     private lateinit var products: ArrayList<ProductAdapterModel>
+    private lateinit var productsController: ProductsController
 
     private val binding get() = _binding!!
 
@@ -31,7 +32,13 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        productsController = ProductsController(requireContext())
 
         val getUser = SharedPreferencesManager.getUserData(requireContext())
         val user = getUser?.split(",")
@@ -44,7 +51,7 @@ class HomeFragment : Fragment() {
         products = ArrayList();
         productsAdapter = ProductsAdapter(products);
 
-        uploadProducts("category1")
+        uploadProducts(1)
 
         binding.rvProductos.layoutManager = GridLayoutManager(requireContext(), 2)
         binding.rvProductos.setHasFixedSize(true)
@@ -57,8 +64,6 @@ class HomeFragment : Fragment() {
                 SharedPreferencesManager.saveProduct(requireContext(), productStr)
             }
         })
-
-        return root
     }
 
     override fun onDestroyView() {
@@ -81,17 +86,19 @@ class HomeFragment : Fragment() {
     private fun setButtonListeners() {
         binding.btnTortas.setOnClickListener {
             updateButtonStates(binding.btnTortas)
-            uploadProducts("category1")
+            uploadProducts(1)
         }
         binding.btnPanes.setOnClickListener {
             updateButtonStates(binding.btnPanes)
-            uploadProducts("category2")
+            uploadProducts(2)
         }
         binding.btnBocaditos.setOnClickListener {
             updateButtonStates(binding.btnBocaditos)
+            uploadProducts(3)
         }
         binding.btnPiononos.setOnClickListener {
             updateButtonStates(binding.btnPiononos)
+            uploadProducts(4)
         }
     }
 
@@ -106,27 +113,36 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun uploadProducts(category: String) {
+    private fun uploadProducts(category: Int) {
         products.clear()
         when (category) {
-            "category1" -> {
-                products.add(ProductAdapterModel("Pan de molde", "Pan de molde", R.drawable.alfajor1, 2.5))
-                products.add(ProductAdapterModel("Pan de molde integral", "Pan de molde integral", R.drawable.cocada, 3.0))
+            1 -> {
+                getProducts(1)
             }
-            "category2" -> {
-                products.add(ProductAdapterModel("Pan de molde con pasas", "Pan de molde con pasas", R.drawable.empanada1, 3.5))
-                products.add(ProductAdapterModel("Pan de molde con nueces", "Pan de molde con nueces", R.drawable.huevos1, 4.0))
-                products.add(ProductAdapterModel("Pan de molde con pasas y nueces", "Pan de molde con pasas y nueces", R.drawable.pan10, 4.5))
+            2 -> {
+                getProducts(2)
+            }
+            3 -> {
+                getProducts(3)
+            }
+            4 -> {
+                getProducts(4)
+            }
+            else -> {
+                getProducts(1)
             }
         }
-        productsAdapter.notifyDataSetChanged()
     }
 
-    private fun uploadProducts() {
-        products.add(ProductAdapterModel("Pan de molde", "Pan de molde", R.drawable.alfajor1, 2.5))
-        products.add(ProductAdapterModel("Pan de molde integral", "Pan de molde integral", R.drawable.cocada, 3.0))
-        products.add(ProductAdapterModel("Pan de molde con pasas", "Pan de molde con pasas", R.drawable.empanada1, 3.5))
-        products.add(ProductAdapterModel("Pan de molde con nueces", "Pan de molde con nueces", R.drawable.huevos1, 4.0))
-        products.add(ProductAdapterModel("Pan de molde con pasas y nueces", "Pan de molde con pasas y nueces", R.drawable.pan10, 4.5))
+    @SuppressLint("NotifyDataSetChanged")
+    private fun getProducts(id: Int) {
+        productsController.getProducts(requireContext(), id) { productsList ->
+            productsList.forEach {
+                products.add(
+                    ProductAdapterModel(it.nombre, it.descripcion, it.imagen, it.precio)
+                )
+            }
+            productsAdapter.notifyDataSetChanged()
+        }
     }
 }

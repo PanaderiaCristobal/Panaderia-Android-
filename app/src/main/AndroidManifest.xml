@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Panaderia"
         tools:targetApi="31">
         <activity
-            android:name=".NiubizActivity"
+            android:name=".views.NiubizActivity"
             android:exported="false" />
         <activity
             android:name=".views.HomeActivity"

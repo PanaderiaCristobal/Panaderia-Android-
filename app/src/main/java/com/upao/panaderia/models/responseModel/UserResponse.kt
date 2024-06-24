@@ -1,27 +1,17 @@
 package com.upao.panaderia.models.responseModel
 
-class UserResponse {
+import com.google.gson.annotations.SerializedName
 
-    var nombre: String = ""
-    var apellido: String = ""
-    var email: String = ""
-    var rol: String = ""
-
-    constructor()
-
-    constructor(
-        nombre: String,
-        apellido: String,
-        email: String,
-        rol: String
-    ) {
-        this.nombre = nombre
-        this.apellido = apellido
-        this.email = email
-        this.rol = rol
-    }
-
+class UserResponse(
+    @SerializedName("id") val id: Int,
+    @SerializedName("nombres") val nombre: String,
+    @SerializedName("apellidos") val apellido: String,
+    @SerializedName("email") val email: String,
+    @SerializedName("puntosFidelidad") val ptsFidelidad: Int,
+    @SerializedName("created_at") val createdAt: String,
+    @SerializedName("updated_at") val updatedAt: String
+) {
     override fun toString(): String {
-        return "UserResponse(nombre='$nombre', apellido='$apellido', email='$email', rol='$rol')"
+        return "UserResponse(id=$id, nombre='$nombre', apellido='$apellido', email='$email', ptsFidelidad=$ptsFidelidad, createdAt='$createdAt', updatedAt='$updatedAt')"
     }
 }

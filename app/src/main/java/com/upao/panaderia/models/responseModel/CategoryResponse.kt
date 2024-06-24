@@ -2,7 +2,7 @@ package com.upao.panaderia.models.responseModel
 
 import com.google.gson.annotations.SerializedName
 
-data class Category(
+data class CategoryResponse(
     @SerializedName("id") val id: Int,
     @SerializedName("name") val name: String,
     @SerializedName("image") val image: String,
@@ -17,6 +17,6 @@ data class Category(
 )
 {
     override fun toString(): String {
-        return "Category(id=$id, name='$name', image='$image', parent_id=$parent_id, position=$position, status=$status, created_at='$created_at', updated_at='$updated_at', priority=$priority, slug='$slug', products_count=$products_count)"
+        return "CategoryResponse(id=$id, name='$name', image='$image', parent_id=$parent_id, position=$position, status=$status, created_at='$created_at', updated_at='$updated_at', priority=$priority, slug='$slug', products_count=$products_count)"
     }
 }

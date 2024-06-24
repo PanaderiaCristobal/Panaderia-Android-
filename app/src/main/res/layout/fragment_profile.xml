@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="20dp"
-    tools:context=".fragments.FragmentPerfil">
+    tools:context=".ui.profile.ProfileFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -60,7 +60,6 @@
             android:text="@string/tv_apellidos" />
 
         <TextView
-
             android:id="@+id/txt_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

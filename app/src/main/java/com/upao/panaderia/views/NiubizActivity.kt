@@ -1,4 +1,4 @@
-package com.upao.panaderia
+package com.upao.panaderia.views
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -12,7 +12,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.upao.panaderia.databinding.ActivityNiubizBinding
 import com.upao.panaderia.helpers.SharedPreferencesManager
-import com.upao.panaderia.views.HomeActivity
 
 class NiubizActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNiubizBinding
@@ -26,10 +25,11 @@ class NiubizActivity : AppCompatActivity() {
         binding = ActivityNiubizBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val idPedido = intent.getStringExtra("idPedido")
         binding.webview.settings.javaScriptEnabled = true
         binding.webview.settings.mixedContentMode = WebSettings.MIXED_CONTENT_ALWAYS_ALLOW
 
-        binding.webview.loadUrl("https://api-trux-travel.strategyec.com/public_html/niubiz/1000234")
+        binding.webview.loadUrl("https://api-trux-travel.strategyec.com/public_html/niubiz/$idPedido")
 
         binding.webview.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {

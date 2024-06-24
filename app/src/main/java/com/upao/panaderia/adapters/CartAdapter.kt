@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.upao.panaderia.R
 import com.upao.panaderia.models.adaptersModel.ProductAdapterModel
 
@@ -27,11 +28,12 @@ class CartAdapter(private val cards:ArrayList<ProductAdapterModel>) : RecyclerVi
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val ivImg: ImageView = itemView.findViewById(R.id.ivImagenProducto)
         @SuppressLint("SetTextI18n")
         fun bind(productAdapterModel: ProductAdapterModel) {
+            Picasso.get().load(productAdapterModel.image).into(ivImg)
             itemView.findViewById<TextView>(R.id.tvNombreProducto).text = productAdapterModel.title
             itemView.findViewById<TextView>(R.id.tvDescripcionProducto).text = productAdapterModel.description
-            itemView.findViewById<ImageView>(R.id.ivImagenProducto).setImageResource(productAdapterModel.image)
             itemView.findViewById<TextView>(R.id.tvPrecioProducto).text = "S/ " + productAdapterModel.price
         }
     }
