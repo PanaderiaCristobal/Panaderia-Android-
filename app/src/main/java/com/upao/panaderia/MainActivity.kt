@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.upao.panaderia.api.apiEndpoints.ApiService
+import com.upao.panaderia.controllers.PedidoController
 import com.upao.panaderia.helpers.SharedPreferencesManager
 import com.upao.panaderia.views.HomeActivity
 import com.upao.panaderia.views.RegisterActivity
@@ -19,10 +20,16 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
+    private val pedidoController = PedidoController(this)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+
+        pedidoController.getPedido(this, 100001) { pedido ->
+            println(pedido)
+        }
 
         val user = SharedPreferencesManager.getUserData(this)
         if (user != null) {

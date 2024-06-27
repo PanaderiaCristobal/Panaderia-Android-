@@ -52,10 +52,10 @@ class PedidoRepository(context: Context) {
     suspend fun getPedido(context: Context, id: Int): PedidoResponse {
         val apiService = Apiclient.createService(ApiService::class.java)
         val response = apiService.getOrder(id)
+        var pedidoResponse: PedidoResponse? = null
         return withContext(Dispatchers.Main) {
             if (response.isSuccessful) {
                 val data = response.body()
-                var pedidoResponse: PedidoResponse? = null
                 if (data != null) {
                     Toast.makeText(context, "Pedido Obtenido con exito! ${data.id}", Toast.LENGTH_SHORT).show()
                     pedidoResponse = PedidoResponse(data.id, data.total, data.estado, data.usuario_id, data.direccion, data.qrCode, data.created_at, data.updated_at)

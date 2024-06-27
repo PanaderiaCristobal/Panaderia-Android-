@@ -29,6 +29,6 @@ interface ApiService {
     @POST("order/place-order")
     suspend fun placeOrder(@Body pedidoRequest: PedidosRequest): Response<ApiResponse>
 
-    @POST("order/{id}")
+    @GET("order/{id}")
     suspend fun getOrder(@Path("id") id: Int): Response<PedidoResponse>
 }
