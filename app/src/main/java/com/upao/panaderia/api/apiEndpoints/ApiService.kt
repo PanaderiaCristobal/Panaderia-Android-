@@ -5,6 +5,7 @@ import com.upao.panaderia.models.requestModel.PedidosRequest
 import com.upao.panaderia.models.requestModel.RegisterRequest
 import com.upao.panaderia.models.responseModel.ApiResponse
 import com.upao.panaderia.models.responseModel.CategoryResponse
+import com.upao.panaderia.models.responseModel.PedidoResponse
 import com.upao.panaderia.models.responseModel.UserResponse
 import retrofit2.Response
 import retrofit2.http.GET
@@ -29,5 +30,5 @@ interface ApiService {
     suspend fun placeOrder(@Body pedidoRequest: PedidosRequest): Response<ApiResponse>
 
     @POST("order/{id}")
-    suspend fun getOrder(@Path("id") id: Int): Response<ApiResponse>
+    suspend fun getOrder(@Path("id") id: Int): Response<PedidoResponse>
 }

@@ -7,7 +7,9 @@ import com.upao.panaderia.api.apiClient.Apiclient
 import com.upao.panaderia.api.apiEndpoints.ApiService
 import com.upao.panaderia.models.ApiError
 import com.upao.panaderia.models.requestModel.PedidosRequest
+import com.upao.panaderia.models.responseModel.ApiResponse
 import com.upao.panaderia.models.responseModel.ErrorResponse
+import com.upao.panaderia.models.responseModel.PedidoResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.Locale
@@ -47,15 +49,18 @@ class PedidoRepository(context: Context) {
         }
     }
 
-    suspend fun getPedido(context: Context, id: Int): String {
+    suspend fun getPedido(context: Context, id: Int): PedidoResponse {
         val apiService = Apiclient.createService(ApiService::class.java)
         val response = apiService.getOrder(id)
         return withContext(Dispatchers.Main) {
             if (response.isSuccessful) {
                 val data = response.body()
-                val idPedido = data?.msg
-                Toast.makeText(context, "Pedido Obtenido con exito! ${idPedido}", Toast.LENGTH_SHORT).show()
-                idPedido ?: ""
+                var pedidoResponse: PedidoResponse? = null
+                if (data != null) {
+                    Toast.makeText(context, "Pedido Obtenido con exito! ${data.id}", Toast.LENGTH_SHORT).show()
+                    pedidoResponse = PedidoResponse(data.id, data.total, data.estado, data.usuario_id, data.direccion, data.qrCode, data.created_at, data.updated_at)
+                }
+                pedidoResponse ?: PedidoResponse(0, 0.0, "", 0, "", "", "", "")
             } else {
                 val errorResponse = response.errorBody()?.string()
                 val apiErrors = parseError(errorResponse)
@@ -75,7 +80,7 @@ class PedidoRepository(context: Context) {
                 } ?: run {
                     Toast.makeText(context, "Error desconocido", Toast.LENGTH_SHORT).show()
                 }
-                ""
+                PedidoResponse(0, 0.0, "", 0, "", "", "", "")
             }
         }
     }

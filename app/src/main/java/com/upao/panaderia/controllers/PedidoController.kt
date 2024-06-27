@@ -2,6 +2,7 @@ package com.upao.panaderia.controllers
 
 import android.content.Context
 import com.upao.panaderia.models.requestModel.PedidosRequest
+import com.upao.panaderia.models.responseModel.PedidoResponse
 import com.upao.panaderia.service.PedidoService
 
 class PedidoController(context: Context) {
@@ -14,9 +15,9 @@ class PedidoController(context: Context) {
         }
     }
 
-    fun getPedido(context: Context, id: Int, onResult: (String) -> Unit) {
-        pedidoService.getPedido(context, id) { idPedido ->
-            onResult(idPedido)
+    fun getPedido(context: Context, id: Int, onResult: (PedidoResponse) -> Unit) {
+        pedidoService.getPedido(context, id) { pedido ->
+            onResult(pedido)
         }
     }
 }

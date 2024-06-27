@@ -2,6 +2,7 @@ package com.upao.panaderia.service
 
 import android.content.Context
 import com.upao.panaderia.models.requestModel.PedidosRequest
+import com.upao.panaderia.models.responseModel.PedidoResponse
 import com.upao.panaderia.repositories.PedidoRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -21,11 +22,11 @@ class PedidoService(context: Context) {
         }
     }
 
-    fun getPedido(context: Context, id: Int, onResult: (String) -> Unit) {
+    fun getPedido(context: Context, id: Int, onResult: (PedidoResponse) -> Unit) {
         CoroutineScope(Dispatchers.IO).launch {
-            val idPedido = pedidoRepository.getPedido(context, id)
+            val pedido = pedidoRepository.getPedido(context, id)
             withContext(Dispatchers.Main) {
-                onResult(idPedido)
+                onResult(pedido)
             }
         }
     }
