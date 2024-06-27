@@ -20,4 +20,13 @@ class PedidoService(context: Context) {
             }
         }
     }
+
+    fun getPedido(context: Context, id: Int, onResult: (String) -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val idPedido = pedidoRepository.getPedido(context, id)
+            withContext(Dispatchers.Main) {
+                onResult(idPedido)
+            }
+        }
+    }
 }

@@ -47,6 +47,39 @@ class PedidoRepository(context: Context) {
         }
     }
 
+    suspend fun getPedido(context: Context, id: Int): String {
+        val apiService = Apiclient.createService(ApiService::class.java)
+        val response = apiService.getOrder(id)
+        return withContext(Dispatchers.Main) {
+            if (response.isSuccessful) {
+                val data = response.body()
+                val idPedido = data?.msg
+                Toast.makeText(context, "Pedido Obtenido con exito! ${idPedido}", Toast.LENGTH_SHORT).show()
+                idPedido ?: ""
+            } else {
+                val errorResponse = response.errorBody()?.string()
+                val apiErrors = parseError(errorResponse)
+                apiErrors?.let { errors ->
+                    for (error in errors) {
+                        val capitalizedCode = error.code.replaceFirstChar {
+                            if (it.isLowerCase()) it.titlecase(
+                                Locale.ROOT
+                            ) else it.toString()
+                        }
+                        Toast.makeText(
+                            context,
+                            "${capitalizedCode}: ${error.message}",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } ?: run {
+                    Toast.makeText(context, "Error desconocido", Toast.LENGTH_SHORT).show()
+                }
+                ""
+            }
+        }
+    }
+
     private fun parseError(errorBody: String?): List<ApiError>? {
         return try {
             errorBody?.let {

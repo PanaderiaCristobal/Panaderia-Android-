@@ -13,4 +13,10 @@ class PedidoController(context: Context) {
             onResult(idPedido)
         }
     }
+
+    fun getPedido(context: Context, id: Int, onResult: (String) -> Unit) {
+        pedidoService.getPedido(context, id) { idPedido ->
+            onResult(idPedido)
+        }
+    }
 }
