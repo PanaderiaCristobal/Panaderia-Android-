@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.upao.panaderia" />
+                  <option name="mobileSdkAppId" value="1:897804011884:android:37dfb3cf0982e11567cb49" />
+                  <option name="projectId" value="appbreadfast" />
+                  <option name="projectNumber" value="897804011884" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
